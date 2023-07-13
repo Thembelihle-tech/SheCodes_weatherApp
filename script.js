@@ -47,8 +47,16 @@ function citySearch(event) {
   axios.get(url).then(currentCityTemp);
 }
 
+let celciusTemperature = null;
+
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", citySearch);
+
+let fahrenheitLink = document.querySelector("#fahreheit-link");
+fahrenheitLink.addEventListener("click, displayFahrenheitTemperature");
+
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click, displayCelsiusTemperature");
 
 function changeHeader(response) {
   let h1 = document.querySelector("#city");
