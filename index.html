@@ -196,11 +196,7 @@ img, svg {
     top: -34px;
 }
 
-.weather-forecast {
-    margin-top: 20px;
-    text-align: center;
-    color: #000;
-}
+
 
 .forecast-daily-block {
     margin-bottom: 20px;
@@ -213,14 +209,6 @@ img, svg {
 .icon_daily {
    border-radius: 5px;
     
-}
-
-.weather-forecast-temperature {
-    font-size: 13px;
-}
-
-.weather-forecast-temperature-min {
-    opacity: 0.5;
 }
 
 .small, small {
@@ -293,34 +281,13 @@ a {
                             </ul>
                         </div>
                     </div>
-                </div><hr>
-                <h6>This week</h6>
-                <div class="weather-forecast" id="forecast">
-                    <div class="row">
-                        <div class="col-4 col-sm-2 forecast-daily-block"><div class="weather-forecast-date">Fri</div><img src="https://static.vecteezy.com/system/resources/previews/012/303/017/original/3d-sunny-weather-illustration-png.png" class="icon_daily" alt width="36">
-                        <div class="weather-forecast-temperature"><span class="weather-forecast-temperature-max">16°</span><span class="weather-forecast-temperature-min">8°</span></div>
-                    </div>
-                        <div class="col-4 col-sm-2 forecast-daily-block"><div class="weather-forecast-date">Sat</div><img src="https://static.vecteezy.com/system/resources/previews/012/303/017/original/3d-sunny-weather-illustration-png.png" class="icon_daily" alt width="36">
-                        <div class="weather-forecast-temperature"><span class="weather-forecast-temperature-max">18°</span><span class="weather-forecast-temperature-min">9°</span></div>
-                    </div>
-                        <div class="col-4 col-sm-2 forecast-daily-block"><div class="weather-forecast-date">Sun</div><img src="https://static.vecteezy.com/system/resources/previews/008/854/781/original/lightning-strike-thunderstorm-weather-icon-meteorological-sign-3d-render-png.png" class="icon_daily" alt width="36">
-                        <div class="weather-forecast-temperature"><span class="weather-forecast-temperature-max">22°</span><span class="weather-forecast-temperature-min">10°</span></div>
-                    </div>
-                        <div class="col-4 col-sm-2 forecast-daily-block"><div class="weather-forecast-date">Mon</div><img src="https://static.vecteezy.com/system/resources/previews/012/303/017/original/3d-sunny-weather-illustration-png.png" class="icon_daily" alt width="36">
-                        <div class="weather-forecast-temperature"><span class="weather-forecast-temperature-max">24°</span><span class="weather-forecast-temperature-min">11°</span></div>
-                    </div>
-                        <div class="col-4 col-sm-2 forecast-daily-block"><div class="weather-forecast-date">Tue</div><img src="https://static.vecteezy.com/system/resources/previews/012/303/017/original/3d-sunny-weather-illustration-png.png" class="icon_daily" alt width="36">
-                        <div class="weather-forecast-temperature"><span class="weather-forecast-temperature-max">23°</span><span class="weather-forecast-temperature-min">10°</span></div>
-                    </div>
-                        <div class="col-4 col-sm-2 forecast-daily-block"><div class="weather-forecast-date">Wed</div><img src="https://static.vecteezy.com/system/resources/previews/008/854/781/original/lightning-strike-thunderstorm-weather-icon-meteorological-sign-3d-render-png.png" class="icon_daily" alt width="36">
-                        <div class="weather-forecast-temperature"><span class="weather-forecast-temperature-max">26°</span><span class="weather-forecast-temperature-min">16°</span></div>
-                    </div>
                 </div>
-            </div>
+                
         </div>
     </div>
     </div>
-    <script>// current date
+    <script>
+    // current date
 
         let now = new Date();
 let days = [
@@ -369,8 +336,16 @@ function citySearch(event) {
   axios.get(url).then(currentCityTemp);
 }
 
+let celciusTemperature = null;
+
 let form = document.querySelector("#search-form");
 form.addEventListener("submit", citySearch);
+
+let fahrenheitLink = document.querySelector("#fahreheit-link");
+fahrenheitLink.addEventListener("click, displayFahrenheitTemperature");
+
+let celsiusLink = document.querySelector("#celsius-link");
+celsiusLink.addEventListener("click, displayCelsiusTemperature");
 
 function changeHeader(response) {
   let h1 = document.querySelector("#city");
